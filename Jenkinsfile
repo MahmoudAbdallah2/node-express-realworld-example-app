@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-    NodeJS "NodeJS"
+    NodeJS 'NodeJS'
   }
   stages {
     stage('preflight') {
