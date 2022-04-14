@@ -1,15 +1,25 @@
+#!/usr/bin/env groovy
 pipeline {
-    agent {
-        docker {
-            image 'node:lts-bullseye-slim' 
-            args '-p 3000:3000' 
-        }
+  agent any
+  tools {nodejs "latest"}
+  stages {
+ #   stage('preflight') {
+  #    steps {
+   #     echo sh(returnStdout: true, script: 'env')
+    #    sh 'node -v'
+     # }
+    #}
+    stage('build') {
+      steps {
+        sh 'npm --version'
+        sh 'git log --reverse -1'
+        sh 'npm install'
+      }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
-        }
+    stage('test') {
+      steps {
+        sh 'npm test'
+      }
     }
+  }
 }
