@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  tools { 'NodeJS' }
+  
     stage('build') {
       steps {
         sh 'npm --version'
