@@ -1,19 +1,15 @@
-#!/usr/bin/env groovy
 pipeline {
-  agent any
-  tools {NodeJS "latest"}
-  stages {
-    stage('build') {
-      steps {
-        sh 'npm --version'
-        sh 'git log --reverse -1'
-        sh 'npm install'
-      }
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
+        }
     }
-    stage('test') {
-      steps {
-        sh 'npm run test'
-      }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'npm install' 
+            }
+        }
     }
-  }
 }
