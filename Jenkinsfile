@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipeline {
   agent any
-  tools {nodejs "latest"}
+  tools {NodeJS "latest"}
   stages {
     stage('build') {
       steps {
