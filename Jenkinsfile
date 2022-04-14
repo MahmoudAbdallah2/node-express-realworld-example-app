@@ -3,12 +3,12 @@ pipeline {
   agent any
   tools {nodejs "latest"}
   stages {
- #   stage('preflight') {
-  #    steps {
-   #     echo sh(returnStdout: true, script: 'env')
-    #    sh 'node -v'
-     # }
-    #}
+#   stage('preflight') {
+#    steps {
+#     echo sh(returnStdout: true, script: 'env')
+#    sh 'node -v'
+# }
+#}
     stage('build') {
       steps {
         sh 'npm --version'
