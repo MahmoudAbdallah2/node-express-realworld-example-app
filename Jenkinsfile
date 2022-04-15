@@ -4,12 +4,6 @@ pipeline {
     nodejs 'NodeJS'
   }
   stages {
-    stage('preflight') {
-      steps {
-        echo sh(returnStdout: true, script: 'env')
-        sh 'node -v'
-      }
-    }
     stage('build') {
       steps {
         sh 'npm --version'
@@ -17,12 +11,6 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('test') {
-      steps {
-        sh 'npm run test'
-      }
-    }
-    
     stage('Login') {
 			steps {
 				sh 'docker login -u mahmoudaboud -p Impossiplem011'
