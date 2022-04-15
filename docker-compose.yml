@@ -2,7 +2,7 @@ version: '3'
 services:
   node:
     restart: always
-    build: .
+    build: https://hub.docker.com/repository/docker/mahmoudaboud/nodeapp_test
     ports:
       - 3000:3000
   mongo:
