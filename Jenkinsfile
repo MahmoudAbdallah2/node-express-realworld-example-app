@@ -22,6 +22,11 @@ pipeline {
 				sh 'docker build -t mahmoudaboud/nodeapp_test:latest .'
 			}
 		}
+	  stage('CreateContainer') {
+		  	steps {
+				sh 'docker run -d --name nodeapp_test_container -p 3000:3000 mahmoudaboud/nodeapp_test:latest
+			}
+	        }
 	  
 	  stage('Push') {
 			steps {
