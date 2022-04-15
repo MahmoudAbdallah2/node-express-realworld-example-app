@@ -22,5 +22,23 @@ pipeline {
         sh 'npm run test'
       }
     }
-  }
+    
+    stage('Login') {
+			steps {
+				sh 'docker login -u mahmoudaboud -p Impossiplem011'
+			}
+		}
+    
+    stage('dockerBuild') {
+			steps {
+				sh 'docker build -t mahmoudaboud/nodeapp_test:latest .'
+			}
+		}
+	  
+	  stage('Push') {
+			steps {
+				sh 'docker push mahmoudaboud/nodeapp_test:latest'
+			}
+		}
+}
 }
