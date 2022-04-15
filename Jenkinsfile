@@ -24,7 +24,8 @@ pipeline {
 		}
 	  stage('CreateContainer') {
 		  	steps {
-				sh 'docker run -d --name nodeapp_test_container -p 3000:3000 mahmoudaboud/nodeapp_test:latest'
+				sh 'docker run --name=mongo mongo'
+				sh 'docker run -d --name nodeapp_test_container -p 3000:3000 -e MONGO_URL=mongodb://mongo:27017/dev mahmoudaboud/nodeapp_test:latest'
 			}
 	        }
 	  
